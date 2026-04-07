@@ -5,6 +5,8 @@ Structure des fichiers
 ----------------------
 
 ```
+generate_icon.swift                   Script de génération de l'icône (CoreGraphics)
+project.yml                           Configuration xcodegen
 Sources/
 ├── Assets.xcassets/                  Asset catalog (icône)
 ├── App/
@@ -24,6 +26,22 @@ Sources/
         ├── TexteCarteView.swift       Carte d'un texte (titre + stats)
         └── PartageSheet.swift         Wrapper UIActivityViewController
 ```
+
+
+Configuration projet (project.yml)
+----------------------------------
+
+Quelques réglages notables au-delà du standard xcodegen :
+
+- `developmentLanguage: fr` — indique à iOS que la langue principale de l'app
+  est le français. Sans ça, les menus système fournis par UIKit (couper, copier,
+  coller, sélectionner…) apparaissent en anglais même sur un appareil en français.
+
+- `GENERATE_INFOPLIST_FILE: YES` — Info.plist entièrement généré par Xcode à
+  partir des build settings, pas de fichier .plist à maintenir manuellement.
+
+- `ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon` — lie le build setting à
+  l'asset catalog pour que Xcode trouve l'icône automatiquement.
 
 
 Modèles
