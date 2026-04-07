@@ -14,6 +14,10 @@ SourceKit analyse les fichiers Swift isolément, hors contexte projet. Les erreu
 du type "Cannot find type X in scope" ou "No such module UIKit" sont des faux positifs
 systématiques — elles disparaissent à la compilation dans Xcode.
 
+## Commits
+Messages en français, norme Conventional Commits : `type: description` (ex: `feat:`,
+`fix:`, `docs:`, `refactor:`, `chore:`).
+
 ## Conventions
 - Noms de variables, fonctions et commentaires en français.
 - Pas de `!` (force unwrap) — utiliser `guard`, `if let` ou `??`.
