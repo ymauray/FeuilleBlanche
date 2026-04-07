@@ -6,6 +6,7 @@ Structure des fichiers
 
 ```
 Sources/
+├── Assets.xcassets/                  Asset catalog (icône)
 ├── App/
 │   └── FeuilleBlancheApp.swift       Point d'entrée (@main), injection du Store
 ├── Models/
@@ -163,6 +164,32 @@ Titre chapitre 2
 ----------------
 Contenu...
 ```
+
+
+Icône
+-----
+
+L'icône est générée programmatiquement via `generate_icon.swift` (CoreGraphics/AppKit),
+à la racine du projet. Pour la régénérer après modification :
+
+```bash
+swift generate_icon.swift
+xcodegen generate
+```
+
+**Design :** page blanche portrait avec ombre portée sur fond crème, curseur noir
+fin en haut à gauche — le seul élément visible dans l'éditeur.
+
+**Paramètres ajustables dans `generate_icon.swift` :**
+- `marginH` — largeur des marges horizontales (proportion portrait de la page)
+- `marginTop` / `marginBottom` — marges verticales
+- Curseur : `width` et `height` dans `cursorRect`
+- Couleurs : fond crème `NSColor(red: 0.957, green: 0.941, blue: 0.910)`
+- Ombre : offset, blur et opacité dans `ctx.setShadow(...)`
+
+Le PNG généré (`Sources/Assets.xcassets/AppIcon.appiconset/AppIcon.png`, 1024×1024)
+est versionné dans git. `generate_icon.swift` l'est aussi pour garder la source
+de vérité du design.
 
 
 Points d'extension
