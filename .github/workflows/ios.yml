@@ -23,10 +23,12 @@ jobs:
 
       - name: Build et tests
         run: |
+          UDID=$(xcrun simctl list devices available -j \
+            | jq -r '[.devices | to_entries[] | select(.key | contains("iOS-18")) | .value[]] | first | .udid')
           xcodebuild \
             -project FeuilleBlanche.xcodeproj \
             -scheme FeuilleBlanche \
-            -destination "platform=iOS Simulator,id=94090282-6E9E-4A21-AAA3-3D6CFD0F3C55" \
+            -destination "platform=iOS Simulator,id=$UDID" \
             -configuration Debug \
             CODE_SIGNING_ALLOWED=NO \
             test
