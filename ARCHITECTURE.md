@@ -9,6 +9,7 @@ generate_icon.swift                   Script de génération de l'icône (CoreGr
 project.yml                           Configuration xcodegen
 Sources/
 ├── Assets.xcassets/                  Asset catalog (icône)
+├── PrivacyInfo.xcprivacy             Manifeste de confidentialité (requis App Store)
 ├── App/
 │   └── FeuilleBlancheApp.swift       Point d'entrée (@main), injection du Store
 ├── Models/
