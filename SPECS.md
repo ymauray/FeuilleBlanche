@@ -17,6 +17,7 @@ Application iOS d'écriture sans distraction.
     - Appui sur « + » : ajouter un nouveau texte (saisie du titre via une alerte)
     - Swipe gauche : Renommer (alerte) / Partager (voir §Partage)
     - Swipe droit : Supprimer (avec confirmation)
+    - Pull to refresh : recharge les données depuis iCloud
 
 3. Un appui sur une carte ouvre la liste des chapitres.
 
@@ -33,6 +34,7 @@ Application iOS d'écriture sans distraction.
     - Appui sur « + » : ajouter un nouveau chapitre (saisie du titre via une alerte)
     - Swipe gauche : Renommer (alerte) / Partager (voir §Partage)
     - Swipe droit : Supprimer (avec confirmation)
+    - Pull to refresh : recharge les données depuis iCloud
 
 6. Un appui sur un chapitre ouvre l'éditeur de texte.
 
@@ -54,14 +56,17 @@ Application iOS d'écriture sans distraction.
    chaque côté. S'adaptent à la rotation de l'écran.
 
 10. Le clavier et le focus apparaissent automatiquement à l'ouverture d'un chapitre.
+    Le contenu se décale automatiquement pour rester visible au-dessus du clavier virtuel.
 
 11. Gestion native de la sélection : déplacer le curseur, sélectionner un mot,
     étendre la sélection, copier, coller, etc.
 
-12. Navigation retour : un double-tap dans la marge gauche ou droite revient
-    à la liste des chapitres.
+12. Navigation retour : un swipe de gauche à droite revient à la liste des chapitres.
 
-13. Les modifications sont enregistrées en temps réel.
+13. Les modifications sont enregistrées :
+    - Lors du swipe retour
+    - Toutes les 60 secondes pendant l'édition
+    - Quand l'application passe en arrière-plan
 
 
 Interface générale
@@ -81,11 +86,13 @@ Partage
     - Le contenu est exporté en texte brut.
 
 
-Persistance
------------
+Persistance et synchronisation
+-------------------------------
 
-16. Les textes sont enregistrés localement dans le bac à sable de l'application
-    (Documents/textes.json), en JSON, en texte brut (sans formatage).
+16. Les textes sont enregistrés dans le conteneur iCloud Documents de l'application
+    (iCloud.ch.yannickmauray.feuille-blanche/Documents/textes.json), en JSON, en
+    texte brut (sans formatage). La synchronisation entre appareils du même compte
+    iCloud est automatique.
 
 
 Informations techniques

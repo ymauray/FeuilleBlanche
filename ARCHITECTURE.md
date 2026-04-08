@@ -7,6 +7,9 @@ Structure des fichiers
 ```
 generate_icon.swift                   Script de génération de l'icône (CoreGraphics)
 project.yml                           Configuration xcodegen
+FeuilleBlanche.entitlements           Droits iCloud Documents
+docs/
+└── index.html                        Politique de confidentialité (GitHub Pages)
 Sources/
 ├── Assets.xcassets/                  Asset catalog (icône)
 ├── PrivacyInfo.xcprivacy             Manifeste de confidentialité (requis App Store)
@@ -18,7 +21,7 @@ Sources/
 ├── Navigation/
 │   └── Route.swift                   Enum de navigation (chapitres / editeur)
 ├── Store/
-│   └── Store.swift                   Source de vérité unique, persistance JSON
+│   └── Store.swift                   Source de vérité unique, persistance JSON + iCloud
 └── Views/
     ├── TexteListView.swift            Écran principal — liste des textes
     ├── ChapitreListView.swift         Liste des chapitres d'un texte
@@ -49,6 +52,8 @@ Quelques réglages notables au-delà du standard xcodegen :
 
 - `ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon` — lie le build setting à
   l'asset catalog pour que Xcode trouve l'icône automatiquement.
+
+- `CODE_SIGN_ENTITLEMENTS: FeuilleBlanche.entitlements` — active iCloud Documents.
 
 
 Modèles
@@ -83,8 +88,20 @@ et lue dans les vues avec `@Environment(Store.self)`.
 
 Responsabilités :
 - CRUD sur les textes et les chapitres (les mutations passent toutes par le Store)
-- Sérialisation/désérialisation JSON dans `Documents/textes.json`
+- Sérialisation/désérialisation JSON dans iCloud Documents (`textes.json`)
 - Sauvegarde systématique après chaque mutation (`.atomic`)
+- Synchronisation iCloud : `configurerICloud()` est appelée en async au démarrage
+
+Propriétés notables :
+- `estPret: Bool` — `false` jusqu'à la fin de la configuration iCloud. Les vues
+  affichent un indicateur de chargement tant que cette propriété est `false`.
+
+Séquence de démarrage :
+1. `init()` lance `configurerICloud()` en tâche asynchrone
+2. `configurerICloud()` localise le conteneur iCloud sur un thread secondaire
+3. Migre les données locales vers iCloud si nécessaire (premier lancement)
+4. Charge `textes.json` depuis iCloud
+5. Positionne `estPret = true` → les vues affichent la liste
 
 Les vues ne mutent jamais les modèles directement — elles appellent les méthodes
 du Store, qui met à jour son tableau `textes` (ce qui déclenche les rafraîchissements
@@ -106,8 +123,8 @@ enum Route: Hashable {
 ```
 
 Les vues enfants poussent des valeurs `Route` via `NavigationLink(value:)`.
-L'éditeur masque la navigation bar et intercepte le retour arrière — la navigation
-retour se fait par double-tap dans la marge (appel de `dismiss()`).
+L'éditeur masque la navigation bar — le retour se fait par swipe de gauche à droite
+(appel de `sauvegarder()` puis `dismiss()`).
 
 
 Barre de statut
@@ -126,47 +143,52 @@ L'éditeur est composé de trois couches UIKit encapsulées dans SwiftUI :
 
 ```
 EditeurView (SwiftUI View)
-└── TextEditeurRepresentable (UIViewRepresentable)
-    └── EditeurContainerView (UIView wrapper)
-        └── EditeurTextView (UITextView sous-classe)
+└── GeometryReader                    (force SwiftUI à allouer tout l'espace disponible)
+    └── TextEditeurRepresentable (UIViewRepresentable)
+        └── EditeurContainerView (UIView wrapper)
+            └── EditeurTextView (UITextView sous-classe)
 ```
 
 **EditeurTextView** est la pièce centrale. Elle gère :
 
 - *Marges* : surcharge de `safeAreaInsetsDidChange()` → `actualiserMarges()`.
-  Formule : `max(safeAreaInsets.côté, 24)` sur les 4 côtés.
-  `contentInsetAdjustmentBehavior = .never` pour éviter le double comptage
-  avec les ajustements automatiques de UIScrollView.
+  Également appelée dans `didMoveToWindow()` pour les appareils sans safe area
+  variable (iPad sans encoche). Formule : `max(safeAreaInsets.côté, 24)` sur les
+  4 côtés. `contentInsetAdjustmentBehavior = .never` pour éviter le double comptage.
+
+- *Clavier* : écoute `keyboardWillShowNotification` et `keyboardWillHideNotification`
+  pour ajuster `contentInset.bottom` et `verticalScrollIndicatorInsets.bottom`.
+  Cela maintient le contenu scrollable au-dessus du clavier virtuel.
 
 - *Typographie* : appliquée via `definirTexte(_:)` qui construit un
   `NSAttributedString` avec un `NSMutableParagraphStyle` (justification,
   indentation première ligne 24pt, espacement paragraphe 8pt) et le pose
-  dans `typingAttributes` + `attributedText`. Les nouvelles saisies héritent
-  automatiquement du style via `typingAttributes`.
+  dans `typingAttributes` + `attributedText`.
 
 - *Focus* : `becomeFirstResponder()` appelé dans `didMoveToWindow()` (une seule
-  fois grâce au drapeau `aDejaFocus`), quand la vue est intégrée dans la fenêtre.
+  fois grâce au drapeau `aDejaFocus`).
 
-- *Geste de retour* : `UITapGestureRecognizer` (double-tap, `numberOfTapsRequired = 2`).
-  `gestureRecognizerShouldBegin` retourne `true` uniquement si le tap se trouve
-  dans la marge gauche ou droite (`point.x < textContainerInset.left` ou
-  `point.x > bounds.width - textContainerInset.right`). Cela préserve le
-  double-tap natif sur le texte (sélection de mot). Reconnaissance simultanée
-  autorisée via `UIGestureRecognizerDelegate`.
+- *Geste de retour* : `UISwipeGestureRecognizer` (direction `.right`). Un swipe
+  de gauche à droite n'importe où sur l'écran déclenche `menuHandler`, ce qui
+  sauvegarde et revient à la liste des chapitres.
 
 **EditeurContainerView** est un `UIView` wrapper transparent. Il existe pour
 permettre d'ajouter facilement des overlays (debug ou futurs) sans modifier
-`EditeurTextView`.
+`EditeurTextView`. Son `intrinsicContentSize` retourne `noIntrinsicMetric` pour
+que SwiftUI ne le dimensionne pas à la hauteur du contenu.
 
 **TextEditeurRepresentable** fait le pont SwiftUI ↔ UIKit :
 - `makeUIView` : construit et configure `EditeurContainerView`
 - `updateUIView` : synchronise le contenu si modifié depuis l'extérieur
+- `sizeThatFits` : retourne la taille proposée par SwiftUI pour garantir que la
+  vue remplit l'espace disponible (nécessaire pour le scroll)
 - `Coordinator` : implémente `UITextViewDelegate.textViewDidChange` pour
   remonter les modifications dans le binding SwiftUI `$contenu`
 
 **EditeurView** (SwiftUI) :
 - Charge le contenu depuis le Store dans `onAppear`
-- Sauvegarde dans le Store à chaque `onChange(of: contenu)`
+- Sauvegarde dans le Store : au swipe retour, toutes les 60 secondes (`Timer`),
+  et lors du passage en arrière-plan (`willResignActiveNotification`)
 - Masque la nav bar (`toolbar(.hidden)` + `navigationBarBackButtonHidden`)
 
 
@@ -225,7 +247,7 @@ Le workflow `.github/workflows/ios.yml` s'exécute à chaque push ou pull reques
 sur `main`. Il :
 1. Installe `xcodegen` via Homebrew
 2. Régénère `FeuilleBlanche.xcodeproj`
-3. Lance `xcodebuild test` sur le premier simulateur iOS disponible (`CODE_SIGNING_ALLOWED=NO`)
+3. Lance `xcodebuild test` sur le simulateur iPhone 16 (`CODE_SIGNING_ALLOWED=NO`)
 
 
 Icône
@@ -259,9 +281,8 @@ Points d'extension
 
 Quelques endroits prévus pour de futures évolutions :
 
-- **Menu contextuel de l'éditeur** : le double-tap dans la marge appelle
-  `menuHandler` sur `EditeurTextView`. Il suffit de changer le comportement
-  dans `EditeurView` (actuellement : `dismiss()`).
+- **Geste de retour personnalisé** : `menuHandler` sur `EditeurTextView` est
+  appelé par le swipe droite. Il suffit de changer le comportement dans `EditeurView`.
 
 - **Overlays debug** : `EditeurContainerView` est prévu pour accueillir des
   sous-vues non-interactives au-dessus de l'éditeur.
