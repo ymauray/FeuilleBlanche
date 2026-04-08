@@ -46,6 +46,7 @@ struct ChapitreListView: View {
                         }
                     }
                 }
+                .refreshable { store.recharger() }
                 .navigationTitle(texte.titre)
             }
         }

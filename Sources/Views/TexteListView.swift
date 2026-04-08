@@ -41,6 +41,7 @@ struct TexteListView: View {
                     }
                 }
             }
+            .refreshable { store.recharger() }
             .navigationTitle("Feuille blanche")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
