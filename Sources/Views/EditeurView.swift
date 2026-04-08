@@ -85,9 +85,12 @@ final class EditeurTextView: UITextView {
 
     override func didMoveToWindow() {
         super.didMoveToWindow()
-        guard window != nil, !aDejaFocus else { return }
-        aDejaFocus = true
-        becomeFirstResponder()
+        guard window != nil else { return }
+        actualiserMarges()
+        if !aDejaFocus {
+            aDejaFocus = true
+            becomeFirstResponder()
+        }
     }
 
     override init(frame: CGRect, textContainer: NSTextContainer?) {

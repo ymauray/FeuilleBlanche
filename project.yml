@@ -2,7 +2,7 @@ name: FeuilleBlanche
 options:
   bundleIdPrefix: ch.yannickmauray
   deploymentTarget:
-    iOS: "26.0"
+    iOS: "18.0"
   createIntermediateGroups: true
   developmentLanguage: fr
 
@@ -39,3 +39,4 @@ targets:
     settings:
       base:
         DEVELOPMENT_TEAM: WFMP87LTRX
+        GENERATE_INFOPLIST_FILE: YES

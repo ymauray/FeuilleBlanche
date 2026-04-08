@@ -224,7 +224,7 @@ Le workflow `.github/workflows/ios.yml` s'exécute à chaque push ou pull reques
 sur `main`. Il :
 1. Installe `xcodegen` via Homebrew
 2. Régénère `FeuilleBlanche.xcodeproj`
-3. Lance `xcodebuild test` sur le simulateur iPhone 16 (`CODE_SIGNING_ALLOWED=NO`)
+3. Lance `xcodebuild test` sur le premier simulateur iOS disponible (`CODE_SIGNING_ALLOWED=NO`)
 
 
 Icône

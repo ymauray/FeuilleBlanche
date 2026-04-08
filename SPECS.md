@@ -91,7 +91,8 @@ Persistance
 Informations techniques
 -----------------------
 
-- Plateforme : iOS 26.0 minimum
+- Plateforme : iOS/iPadOS 18.0 minimum
+- Appareils : iPhone (toutes tailles) et iPad (7e génération et plus récent)
 - Langage : Swift 6, SwiftUI + UIKit (UITextView pour l'éditeur)
 - Bundle ID : ch.yannickmauray.feuille-blanche
 - Équipe : WFMP87LTRX
