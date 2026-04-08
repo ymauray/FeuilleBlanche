@@ -6,17 +6,48 @@ import Observation
 final class Store {
     var textes: [Texte] = []
 
-    private let fileURL: URL = {
-        FileManager.default
-            .urls(for: .documentDirectory, in: .userDomainMask)[0]
-            .appendingPathComponent("textes.json")
-    }()
+    private var fileURL: URL = FileManager.default
+        .urls(for: .documentDirectory, in: .userDomainMask)[0]
+        .appendingPathComponent("textes.json")
 
     init() {
+        load()
+        Task {
+            await configurerICloud()
+        }
+    }
+
+    // MARK: - iCloud
+
+    private func configurerICloud() async {
+        let containerURL = await Task.detached(priority: .userInitiated) {
+            FileManager.default.url(
+                forUbiquityContainerIdentifier: "iCloud.ch.yannickmauray.feuille-blanche"
+            )
+        }.value
+
+        guard let containerURL else { return }
+
+        let documentsURL = containerURL.appendingPathComponent("Documents")
+        try? FileManager.default.createDirectory(at: documentsURL, withIntermediateDirectories: true)
+
+        let iCloudURL = documentsURL.appendingPathComponent("textes.json")
+
+        // Migration : si des données locales existent mais pas encore sur iCloud, on les copie
+        if !FileManager.default.fileExists(atPath: iCloudURL.path),
+           FileManager.default.fileExists(atPath: fileURL.path) {
+            try? FileManager.default.copyItem(at: fileURL, to: iCloudURL)
+        }
+
+        fileURL = iCloudURL
         load()
     }
 
     // MARK: - Persistance
+
+    func recharger() {
+        load()
+    }
 
     private func load() {
         guard let data = try? Data(contentsOf: fileURL),
