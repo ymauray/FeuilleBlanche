@@ -11,6 +11,7 @@
 		207E4F7CDDBF65C479C903B0 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1C766D0F32333A4DB070E /* Route.swift */; };
 		224490E7A1895C6220456E67 /* FeuilleBlancheApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8AEA6DA5FA2EE731F9287F /* FeuilleBlancheApp.swift */; };
 		28477DEE574F6E09DE0988FB /* Texte.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD15ED8B64A8E2C4DDF5455 /* Texte.swift */; };
+		32350089649DE2AC3A1595C3 /* FeuilleBlancheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D323C0CAF71459DF1E6A09 /* FeuilleBlancheTests.swift */; };
 		3946650D6C0F709D71A5A23F /* TexteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD43A1E034CC2C7B4B4E77CB /* TexteListView.swift */; };
 		50C71CF75ABFBFC54A54F1C6 /* TexteCarteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A42E59EE00FA30C931E8DD /* TexteCarteView.swift */; };
 		5A22A616E66B50100B0634A1 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F258D3740DF8A4FEB775D96C /* Store.swift */; };
@@ -20,12 +21,24 @@
 		FA3B6F9A1E183CB4FB7F765F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E06DB32380FD2267BEE06EC7 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		E11F9824DB91A17E34D36114 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FEB68FCB9BABA56DCD811EC6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BA4088A834CA243306FF3028;
+			remoteInfo = FeuilleBlanche;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		1105DF6AFA08E3702C36E5F2 /* ChapitreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapitreListView.swift; sourceTree = "<group>"; };
+		35D323C0CAF71459DF1E6A09 /* FeuilleBlancheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeuilleBlancheTests.swift; sourceTree = "<group>"; };
 		49A42E59EE00FA30C931E8DD /* TexteCarteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TexteCarteView.swift; sourceTree = "<group>"; };
 		59AA905B7686955F4208D730 /* Chapitre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapitre.swift; sourceTree = "<group>"; };
 		6D8AEA6DA5FA2EE731F9287F /* FeuilleBlancheApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeuilleBlancheApp.swift; sourceTree = "<group>"; };
 		8F87CEA792F1478580228427 /* FeuilleBlanche.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = FeuilleBlanche.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		996A8A820C233E0D0ACCAC67 /* FeuilleBlancheTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = FeuilleBlancheTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50300EA4678BEEE5CED1939 /* PartageSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartageSheet.swift; sourceTree = "<group>"; };
 		DCD15ED8B64A8E2C4DDF5455 /* Texte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texte.swift; sourceTree = "<group>"; };
 		E06DB32380FD2267BEE06EC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -78,10 +91,19 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		6543425F9E38407E332A2239 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				35D323C0CAF71459DF1E6A09 /* FeuilleBlancheTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		A0A2E572C4CADDB20EC98B48 = {
 			isa = PBXGroup;
 			children = (
 				1E10B6EF8001BB658CAECE56 /* Sources */,
+				6543425F9E38407E332A2239 /* Tests */,
 				E00C719960826D527B47092E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -114,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				8F87CEA792F1478580228427 /* FeuilleBlanche.app */,
+				996A8A820C233E0D0ACCAC67 /* FeuilleBlancheTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -121,6 +144,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		160FB68D8F63C919F730F73A /* FeuilleBlancheTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F2938A2802EA2AABE0AA6C6A /* Build configuration list for PBXNativeTarget "FeuilleBlancheTests" */;
+			buildPhases = (
+				DD6ACF8C0B01551400DE2899 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C7C73F5E1B82549BE0010CDE /* PBXTargetDependency */,
+			);
+			name = FeuilleBlancheTests;
+			packageProductDependencies = (
+			);
+			productName = FeuilleBlancheTests;
+			productReference = 996A8A820C233E0D0ACCAC67 /* FeuilleBlancheTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		BA4088A834CA243306FF3028 /* FeuilleBlanche */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6B4020BFE49E7CE6DE4108A3 /* Build configuration list for PBXNativeTarget "FeuilleBlanche" */;
@@ -148,6 +189,9 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					160FB68D8F63C919F730F73A = {
+						DevelopmentTeam = WFMP87LTRX;
+					};
 					BA4088A834CA243306FF3028 = {
 						DevelopmentTeam = WFMP87LTRX;
 					};
@@ -168,6 +212,7 @@
 			projectRoot = "";
 			targets = (
 				BA4088A834CA243306FF3028 /* FeuilleBlanche */,
+				160FB68D8F63C919F730F73A /* FeuilleBlancheTests */,
 			);
 		};
 /* End PBXProject section */
@@ -201,9 +246,42 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DD6ACF8C0B01551400DE2899 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32350089649DE2AC3A1595C3 /* FeuilleBlancheTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		C7C73F5E1B82549BE0010CDE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BA4088A834CA243306FF3028 /* FeuilleBlanche */;
+			targetProxy = E11F9824DB91A17E34D36114 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		2ED9DD586D7D4E530F5CDBE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = WFMP87LTRX;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ch.yannickmauray.FeuilleBlancheTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FeuilleBlanche.app/FeuilleBlanche";
+			};
+			name = Debug;
+		};
 		6B8C0122A7B5747EB821670C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -369,6 +447,23 @@
 			};
 			name = Release;
 		};
+		FDE430CADA0B3FA21E1DB97C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = WFMP87LTRX;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ch.yannickmauray.FeuilleBlancheTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FeuilleBlanche.app/FeuilleBlanche";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -377,6 +472,15 @@
 			buildConfigurations = (
 				82FCD1CD98D74798E076A7C1 /* Debug */,
 				971401853D73333BDAFE6331 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F2938A2802EA2AABE0AA6C6A /* Build configuration list for PBXNativeTarget "FeuilleBlancheTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2ED9DD586D7D4E530F5CDBE1 /* Debug */,
+				FDE430CADA0B3FA21E1DB97C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
