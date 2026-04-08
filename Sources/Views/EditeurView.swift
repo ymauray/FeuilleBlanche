@@ -20,7 +20,6 @@ struct EditeurView: View {
         .ignoresSafeArea()
         .toolbar(.hidden, for: .navigationBar)
         .navigationBarBackButtonHidden(true)
-        .statusBarHidden(true)
         .onAppear {
             contenu = store.chapitre(id: chapitreID, dans: texteID)?.contenu ?? ""
         }

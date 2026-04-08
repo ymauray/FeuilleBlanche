@@ -1,0 +1,396 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0A7DFFDF92E0D075E7018684 /* Chapitre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AA905B7686955F4208D730 /* Chapitre.swift */; };
+		207E4F7CDDBF65C479C903B0 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1C766D0F32333A4DB070E /* Route.swift */; };
+		224490E7A1895C6220456E67 /* FeuilleBlancheApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8AEA6DA5FA2EE731F9287F /* FeuilleBlancheApp.swift */; };
+		28477DEE574F6E09DE0988FB /* Texte.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD15ED8B64A8E2C4DDF5455 /* Texte.swift */; };
+		3946650D6C0F709D71A5A23F /* TexteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD43A1E034CC2C7B4B4E77CB /* TexteListView.swift */; };
+		50C71CF75ABFBFC54A54F1C6 /* TexteCarteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A42E59EE00FA30C931E8DD /* TexteCarteView.swift */; };
+		5A22A616E66B50100B0634A1 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F258D3740DF8A4FEB775D96C /* Store.swift */; };
+		8C687B6163DFD233F8E093D8 /* ChapitreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1105DF6AFA08E3702C36E5F2 /* ChapitreListView.swift */; };
+		C5F5CAE5E6CE214344FF083B /* EditeurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E7641D926D8077100818A0 /* EditeurView.swift */; };
+		DEB1953C3E4A3FF89EF4185F /* PartageSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50300EA4678BEEE5CED1939 /* PartageSheet.swift */; };
+		FA3B6F9A1E183CB4FB7F765F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E06DB32380FD2267BEE06EC7 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1105DF6AFA08E3702C36E5F2 /* ChapitreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapitreListView.swift; sourceTree = "<group>"; };
+		49A42E59EE00FA30C931E8DD /* TexteCarteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TexteCarteView.swift; sourceTree = "<group>"; };
+		59AA905B7686955F4208D730 /* Chapitre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapitre.swift; sourceTree = "<group>"; };
+		6D8AEA6DA5FA2EE731F9287F /* FeuilleBlancheApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeuilleBlancheApp.swift; sourceTree = "<group>"; };
+		8F87CEA792F1478580228427 /* FeuilleBlanche.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = FeuilleBlanche.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C50300EA4678BEEE5CED1939 /* PartageSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartageSheet.swift; sourceTree = "<group>"; };
+		DCD15ED8B64A8E2C4DDF5455 /* Texte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texte.swift; sourceTree = "<group>"; };
+		E06DB32380FD2267BEE06EC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E6A1C766D0F32333A4DB070E /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		E6E7641D926D8077100818A0 /* EditeurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditeurView.swift; sourceTree = "<group>"; };
+		F258D3740DF8A4FEB775D96C /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		FD43A1E034CC2C7B4B4E77CB /* TexteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TexteListView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		1E10B6EF8001BB658CAECE56 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				E06DB32380FD2267BEE06EC7 /* Assets.xcassets */,
+				B9AF8F5164B5D5D7D9C45B2D /* App */,
+				6374FFDA5B4569A9B05D72AA /* Models */,
+				B6241C52594B08F462C99AE7 /* Navigation */,
+				DA01607FA24AEC4472B0FABF /* Store */,
+				63C5439D92D3E7743366223E /* Views */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		395C8C291C26ACBDB1F1EFE8 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C50300EA4678BEEE5CED1939 /* PartageSheet.swift */,
+				49A42E59EE00FA30C931E8DD /* TexteCarteView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		6374FFDA5B4569A9B05D72AA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				59AA905B7686955F4208D730 /* Chapitre.swift */,
+				DCD15ED8B64A8E2C4DDF5455 /* Texte.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		63C5439D92D3E7743366223E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1105DF6AFA08E3702C36E5F2 /* ChapitreListView.swift */,
+				E6E7641D926D8077100818A0 /* EditeurView.swift */,
+				FD43A1E034CC2C7B4B4E77CB /* TexteListView.swift */,
+				395C8C291C26ACBDB1F1EFE8 /* Components */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A0A2E572C4CADDB20EC98B48 = {
+			isa = PBXGroup;
+			children = (
+				1E10B6EF8001BB658CAECE56 /* Sources */,
+				E00C719960826D527B47092E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B6241C52594B08F462C99AE7 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				E6A1C766D0F32333A4DB070E /* Route.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		B9AF8F5164B5D5D7D9C45B2D /* App */ = {
+			isa = PBXGroup;
+			children = (
+				6D8AEA6DA5FA2EE731F9287F /* FeuilleBlancheApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		DA01607FA24AEC4472B0FABF /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				F258D3740DF8A4FEB775D96C /* Store.swift */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		E00C719960826D527B47092E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8F87CEA792F1478580228427 /* FeuilleBlanche.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BA4088A834CA243306FF3028 /* FeuilleBlanche */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6B4020BFE49E7CE6DE4108A3 /* Build configuration list for PBXNativeTarget "FeuilleBlanche" */;
+			buildPhases = (
+				D96805F187F211FA83BBBAF5 /* Sources */,
+				C9395DE37F4EF9697CD95A59 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FeuilleBlanche;
+			packageProductDependencies = (
+			);
+			productName = FeuilleBlanche;
+			productReference = 8F87CEA792F1478580228427 /* FeuilleBlanche.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FEB68FCB9BABA56DCD811EC6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					BA4088A834CA243306FF3028 = {
+						DevelopmentTeam = WFMP87LTRX;
+					};
+				};
+			};
+			buildConfigurationList = F7D82EC91BE2879137CA2C8D /* Build configuration list for PBXProject "FeuilleBlanche" */;
+			developmentRegion = fr;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				fr,
+			);
+			mainGroup = A0A2E572C4CADDB20EC98B48;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = E00C719960826D527B47092E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BA4088A834CA243306FF3028 /* FeuilleBlanche */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C9395DE37F4EF9697CD95A59 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA3B6F9A1E183CB4FB7F765F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D96805F187F211FA83BBBAF5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A7DFFDF92E0D075E7018684 /* Chapitre.swift in Sources */,
+				8C687B6163DFD233F8E093D8 /* ChapitreListView.swift in Sources */,
+				C5F5CAE5E6CE214344FF083B /* EditeurView.swift in Sources */,
+				224490E7A1895C6220456E67 /* FeuilleBlancheApp.swift in Sources */,
+				DEB1953C3E4A3FF89EF4185F /* PartageSheet.swift in Sources */,
+				207E4F7CDDBF65C479C903B0 /* Route.swift in Sources */,
+				5A22A616E66B50100B0634A1 /* Store.swift in Sources */,
+				28477DEE574F6E09DE0988FB /* Texte.swift in Sources */,
+				50C71CF75ABFBFC54A54F1C6 /* TexteCarteView.swift in Sources */,
+				3946650D6C0F709D71A5A23F /* TexteListView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		6B8C0122A7B5747EB821670C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = WFMP87LTRX;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		82FCD1CD98D74798E076A7C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WFMP87LTRX;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Feuille blanche";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.yannickmauray.feuille-blanche";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		971401853D73333BDAFE6331 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WFMP87LTRX;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Feuille blanche";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.yannickmauray.feuille-blanche";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C4EF6EB84986451735303904 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = WFMP87LTRX;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6B4020BFE49E7CE6DE4108A3 /* Build configuration list for PBXNativeTarget "FeuilleBlanche" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82FCD1CD98D74798E076A7C1 /* Debug */,
+				971401853D73333BDAFE6331 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F7D82EC91BE2879137CA2C8D /* Build configuration list for PBXProject "FeuilleBlanche" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B8C0122A7B5747EB821670C /* Debug */,
+				C4EF6EB84986451735303904 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FEB68FCB9BABA56DCD811EC6 /* Project object */;
+}

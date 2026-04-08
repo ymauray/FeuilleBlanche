@@ -8,6 +8,7 @@ struct FeuilleBlancheApp: App {
         WindowGroup {
             TexteListView()
                 .environment(store)
+                .statusBarHidden(true)
         }
     }
 }
