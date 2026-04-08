@@ -55,6 +55,10 @@ Quelques réglages notables au-delà du standard xcodegen :
 
 - `CODE_SIGN_ENTITLEMENTS: FeuilleBlanche.entitlements` — active iCloud Documents.
 
+- `INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad` / `_iPhone` — les quatre
+  orientations sont autorisées sur iPhone et iPad. Requis par Apple pour le
+  multitâche iPad (validation App Store).
+
 
 Modèles
 -------
