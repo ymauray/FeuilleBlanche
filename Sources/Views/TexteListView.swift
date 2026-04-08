@@ -11,6 +11,10 @@ struct TexteListView: View {
 
     var body: some View {
         NavigationStack {
+            if !store.estPret {
+                ProgressView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
             List {
                 ForEach(store.textes) { texte in
                     NavigationLink(value: Route.chapitres(texte.id)) {
@@ -60,6 +64,7 @@ struct TexteListView: View {
                 case .editeur(let texteID, let chapitreID):
                     EditeurView(texteID: texteID, chapitreID: chapitreID)
                 }
+            }
             }
         }
         .alert("Nouveau texte", isPresented: $showAjouter) {
