@@ -1,0 +1,51 @@
+name: Rapport de bug
+description: Signaler un comportement inattendu
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Merci de prendre le temps de signaler ce bug.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Que s'est-il passé ?
+      placeholder: En ouvrant un chapitre, l'application se ferme brutalement.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Étapes pour reproduire
+      placeholder: |
+        1. Ouvrir un texte
+        2. Appuyer sur un chapitre
+        3. …
+    validations:
+      required: true
+
+  - type: textarea
+    id: attendu
+    attributes:
+      label: Comportement attendu
+      placeholder: L'éditeur devrait s'ouvrir.
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Version de l'application
+      placeholder: "1.0"
+    validations:
+      required: true
+
+  - type: input
+    id: appareil
+    attributes:
+      label: Appareil et version iOS
+      placeholder: iPhone 15 Pro — iOS 18.3
+    validations:
+      required: true
