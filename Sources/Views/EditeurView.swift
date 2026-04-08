@@ -23,9 +23,16 @@ struct EditeurView: View {
         .onAppear {
             contenu = store.chapitre(id: chapitreID, dans: texteID)?.contenu ?? ""
         }
-        .onChange(of: contenu) {
-            store.mettreAJourContenu(chapitreID: chapitreID, dans: texteID, contenu: contenu)
+        .onDisappear {
+            sauvegarder()
         }
+        .onReceive(Timer.publish(every: 60, on: .main, in: .common).autoconnect()) { _ in
+            sauvegarder()
+        }
+    }
+
+    private func sauvegarder() {
+        store.mettreAJourContenu(chapitreID: chapitreID, dans: texteID, contenu: contenu)
     }
 }
 
