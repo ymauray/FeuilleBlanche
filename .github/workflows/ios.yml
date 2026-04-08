@@ -26,7 +26,7 @@ jobs:
           xcodebuild \
             -project FeuilleBlanche.xcodeproj \
             -scheme FeuilleBlanche \
-            -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" \
+            -destination "platform=iOS Simulator,id=dvtdevice-DVTiOSDeviceSimulatorPlaceholder-iphonesimulator:placeholder" \
             -configuration Debug \
             CODE_SIGNING_ALLOWED=NO \
             test
