@@ -25,6 +25,11 @@ Sources/
     └── Components/
         ├── TexteCarteView.swift       Carte d'un texte (titre + stats)
         └── PartageSheet.swift         Wrapper UIActivityViewController
+Tests/
+└── FeuilleBlancheTests.swift         Tests unitaires (Chapitre, Texte, Store)
+.github/
+└── workflows/
+    └── ios.yml                       CI GitHub Actions (build + tests)
 ```
 
 
@@ -39,6 +44,7 @@ Quelques réglages notables au-delà du standard xcodegen :
 
 - `GENERATE_INFOPLIST_FILE: YES` — Info.plist entièrement généré par Xcode à
   partir des build settings, pas de fichier .plist à maintenir manuellement.
+  Appliqué sur les deux cibles (app et tests).
 
 - `ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon` — lie le build setting à
   l'asset catalog pour que Xcode trouve l'icône automatiquement.
@@ -103,6 +109,15 @@ L'éditeur masque la navigation bar et intercepte le retour arrière — la navi
 retour se fait par double-tap dans la marge (appel de `dismiss()`).
 
 
+Barre de statut
+---------------
+
+La barre de statut est masquée sur toute l'application via `.statusBarHidden(true)`
+posé sur la vue racine dans `FeuilleBlancheApp`. Ce modificateur se propage à
+l'ensemble du `NavigationStack` sans qu'il soit nécessaire de le répéter dans
+chaque vue.
+
+
 Éditeur
 -------
 
@@ -151,7 +166,7 @@ permettre d'ajouter facilement des overlays (debug ou futurs) sans modifier
 **EditeurView** (SwiftUI) :
 - Charge le contenu depuis le Store dans `onAppear`
 - Sauvegarde dans le Store à chaque `onChange(of: contenu)`
-- Gère `statusBarHidden(true)` et la suppression de la nav bar
+- Masque la nav bar (`toolbar(.hidden)` + `navigationBarBackButtonHidden`)
 
 
 Partage
@@ -182,6 +197,34 @@ Titre chapitre 2
 ----------------
 Contenu...
 ```
+
+
+Tests
+-----
+
+La cible `FeuilleBlancheTests` (Swift Testing) couvre :
+
+- **`ChapitreTests`** — comptage de mots (cas limites : vide, espaces multiples,
+  retours à la ligne) et comptage de signes.
+- **`TexteTests`** — agrégation des stats sur plusieurs chapitres, chapitres vides
+  sans impact sur les totaux.
+- **`StoreTests`** — CRUD complet (ajouter, supprimer, renommer texte et chapitre,
+  mise à jour du contenu), aller-retour JSON pour la persistance.
+
+Chaque test Store nettoie les données qu'il a créées (`nettoyerDernier`) pour ne
+pas polluer le fichier `textes.json` du simulateur entre les runs.
+
+Lancer les tests : `⌘U` dans Xcode.
+
+
+Intégration continue
+--------------------
+
+Le workflow `.github/workflows/ios.yml` s'exécute à chaque push ou pull request
+sur `main`. Il :
+1. Installe `xcodegen` via Homebrew
+2. Régénère `FeuilleBlanche.xcodeproj`
+3. Lance `xcodebuild test` sur le simulateur iPhone 16 (`CODE_SIGNING_ALLOWED=NO`)
 
 
 Icône

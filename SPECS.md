@@ -40,8 +40,8 @@ Application iOS d'écriture sans distraction.
 Éditeur de texte
 ----------------
 
-7. Plein écran, sans aucune décoration ni menu. La barre de statut (heure, signal, batterie)
-   est masquée. Seul le curseur clignotant est visible.
+7. Plein écran, sans aucune décoration ni menu. La barre de navigation est masquée.
+   Seul le curseur clignotant est visible.
 
 8. Typographie :
     - Police : New York (serif Apple, taille 18pt)
@@ -64,10 +64,16 @@ Application iOS d'écriture sans distraction.
 13. Les modifications sont enregistrées en temps réel.
 
 
+Interface générale
+------------------
+
+14. La barre de statut (heure, signal, batterie) est masquée sur toute l'application.
+
+
 Partage
 -------
 
-14. Le contenu peut être partagé via l'interface système (mail, Telegram, WhatsApp, etc.)
+15. Le contenu peut être partagé via l'interface système (mail, Telegram, WhatsApp, etc.)
     à deux niveaux :
     - Au niveau du texte (swipe gauche sur une carte) : exporte tous les chapitres
       avec titres, séparateurs et contenu.
@@ -78,7 +84,7 @@ Partage
 Persistance
 -----------
 
-15. Les textes sont enregistrés localement dans le bac à sable de l'application
+16. Les textes sont enregistrés localement dans le bac à sable de l'application
     (Documents/textes.json), en JSON, en texte brut (sans formatage).
 
 

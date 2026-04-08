@@ -8,15 +8,21 @@ et `ARCHITECTURE.md` pour la structure du code.
 - Après toute modification de fichiers Swift ou de `project.yml` :
   relancer `xcodegen generate` pour régénérer `FeuilleBlanche.xcodeproj`.
 - Ne jamais modifier `.xcodeproj` à la main.
+- Ne jamais committer sans demande explicite de l'utilisateur.
+
+## Tests
+- Les tests unitaires se trouvent dans `Tests/FeuilleBlancheTests.swift`.
+- Les lancer localement : `⌘U` dans Xcode, ou `xcodebuild test` en ligne de commande.
+- Vérifier que les tests passent avant de committer.
 
 ## Erreurs LSP à ignorer
 SourceKit analyse les fichiers Swift isolément, hors contexte projet. Les erreurs
-du type "Cannot find type X in scope" ou "No such module UIKit" sont des faux positifs
-systématiques — elles disparaissent à la compilation dans Xcode.
+du type "Cannot find type X in scope", "No such module UIKit" ou "No such module Testing"
+sont des faux positifs systématiques — elles disparaissent à la compilation dans Xcode.
 
 ## Commits
 Messages en français, norme Conventional Commits : `type: description` (ex: `feat:`,
-`fix:`, `docs:`, `refactor:`, `chore:`).
+`fix:`, `docs:`, `refactor:`, `chore:`, `test:`).
 
 ## Conventions
 - Noms de variables, fonctions et commentaires en français.
