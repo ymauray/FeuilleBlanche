@@ -8,7 +8,7 @@ et `ARCHITECTURE.md` pour la structure du code.
 - Après toute modification de fichiers Swift ou de `project.yml` :
   relancer `xcodegen generate` pour régénérer `FeuilleBlanche.xcodeproj`.
 - Ne jamais modifier `.xcodeproj` à la main.
-- Ne jamais committer sans demande explicite de l'utilisateur.
+- Ne jamais committer ni pousser sans demande explicite de l'utilisateur.
 
 ## Tests
 - Les tests unitaires se trouvent dans `Tests/FeuilleBlancheTests.swift`.
