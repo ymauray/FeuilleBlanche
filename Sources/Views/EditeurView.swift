@@ -13,10 +13,15 @@ struct EditeurView: View {
     @State private var contenu = ""
 
     var body: some View {
-        TextEditeurRepresentable(
-            contenu: $contenu,
-            onRetour: { dismiss() }
-        )
+        GeometryReader { _ in
+            TextEditeurRepresentable(
+                contenu: $contenu,
+                onRetour: {
+                    sauvegarder()
+                    dismiss()
+                }
+            )
+        }
         .ignoresSafeArea()
         .toolbar(.hidden, for: .navigationBar)
         .navigationBarBackButtonHidden(true)
@@ -27,6 +32,9 @@ struct EditeurView: View {
             sauvegarder()
         }
         .onReceive(Timer.publish(every: 60, on: .main, in: .common).autoconnect()) { _ in
+            sauvegarder()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
             sauvegarder()
         }
     }
@@ -64,6 +72,11 @@ struct TextEditeurRepresentable: UIViewRepresentable {
         uiView.editeurTextView.definirTexte(contenu)
     }
 
+    func sizeThatFits(_ proposal: ProposedViewSize, uiView: EditeurContainerView, context: Context) -> CGSize? {
+        guard let width = proposal.width, let height = proposal.height else { return nil }
+        return CGSize(width: width, height: height)
+    }
+
     func makeCoordinator() -> Coordinator {
         Coordinator(contenu: $contenu)
     }
@@ -87,7 +100,7 @@ struct TextEditeurRepresentable: UIViewRepresentable {
 final class EditeurTextView: UITextView {
     var menuHandler: (() -> Void)?
 
-    private var doubleTapMarge: UITapGestureRecognizer!
+    private var swipeRetour: UISwipeGestureRecognizer!
     private var aDejaFocus = false
 
     override func didMoveToWindow() {
@@ -96,8 +109,44 @@ final class EditeurTextView: UITextView {
         actualiserMarges()
         if !aDejaFocus {
             aDejaFocus = true
+            NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(clavierVaApparaitre(_:)),
+                name: UIResponder.keyboardWillShowNotification,
+                object: nil
+            )
+            NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(clavierVaDisparaitre(_:)),
+                name: UIResponder.keyboardWillHideNotification,
+                object: nil
+            )
             becomeFirstResponder()
         }
+    }
+
+    @objc private func clavierVaApparaitre(_ notification: Notification) {
+        guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+              let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
+        else { return }
+        UIView.animate(withDuration: duration) {
+            self.contentInset.bottom = keyboardFrame.height
+            self.verticalScrollIndicatorInsets.bottom = keyboardFrame.height
+        }
+    }
+
+    @objc private func clavierVaDisparaitre(_ notification: Notification) {
+        guard let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
+        else { return }
+        UIView.animate(withDuration: duration) {
+            self.contentInset.bottom = 0
+            self.verticalScrollIndicatorInsets.bottom = 0
+        }
+    }
+
+    // Empêche SwiftUI de dimensionner la vue à la hauteur du texte
+    override var intrinsicContentSize: CGSize {
+        CGSize(width: UIView.noIntrinsicMetric, height: UIView.noIntrinsicMetric)
     }
 
     override init(frame: CGRect, textContainer: NSTextContainer?) {
@@ -141,21 +190,13 @@ final class EditeurTextView: UITextView {
     }
 
     private func configurerGeste() {
-        doubleTapMarge = UITapGestureRecognizer(target: self, action: #selector(gererDoubleTap))
-        doubleTapMarge.numberOfTapsRequired = 2
-        doubleTapMarge.delegate = self
-        addGestureRecognizer(doubleTapMarge)
+        swipeRetour = UISwipeGestureRecognizer(target: self, action: #selector(gererSwipe))
+        swipeRetour.direction = .right
+        addGestureRecognizer(swipeRetour)
     }
 
-    @objc private func gererDoubleTap() {
+    @objc private func gererSwipe() {
         menuHandler?()
-    }
-
-    // Retourne vrai si le point se trouve dans la marge gauche ou droite
-    private func estDansMarge(_ point: CGPoint) -> Bool {
-        let limiteGauche = textContainerInset.left
-        let limiteDroite = bounds.width - textContainerInset.right
-        return point.x < limiteGauche || point.x > limiteDroite
     }
 }
 
@@ -172,27 +213,14 @@ final class EditeurContainerView: UIView {
 
     required init?(coder: NSCoder) { fatalError() }
 
+    override var intrinsicContentSize: CGSize {
+        CGSize(width: UIView.noIntrinsicMetric, height: UIView.noIntrinsicMetric)
+    }
+
     override func layoutSubviews() {
         super.layoutSubviews()
         editeurTextView.frame = bounds
     }
 }
 
-// MARK: - UIGestureRecognizerDelegate
-
-extension EditeurTextView: UIGestureRecognizerDelegate {
-    // N'active le geste que si le tap est dans la marge — le double-tap sur le texte
-    // (sélection de mot) reste donc intact
-    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        guard gestureRecognizer === doubleTapMarge else { return true }
-        return estDansMarge(gestureRecognizer.location(in: self))
-    }
-
-    func gestureRecognizer(
-        _ gestureRecognizer: UIGestureRecognizer,
-        shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer
-    ) -> Bool {
-        return gestureRecognizer === doubleTapMarge
-    }
-}
 
