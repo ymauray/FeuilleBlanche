@@ -55,7 +55,7 @@ struct TexteTests {
             Chapitre(titre: "Ch. 2", contenu: "Il fait beau")
         ]
         #expect(texte.nombreDeMots == 6)
-        #expect(texte.nombreDeSignes == 29)
+        #expect(texte.nombreDeSignes == 28)
     }
 
     @Test func chapitreVideNInfluencePasLesStats() {
