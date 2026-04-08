@@ -1,4 +1,5 @@
 import Testing
+import Foundation
 @testable import FeuilleBlanche
 
 // MARK: - Chapitre
@@ -135,7 +136,6 @@ struct StoreTests {
         #expect(decoded[0].chapitres.first?.contenu == "Contenu de test")
     }
 
-    // Supprime le dernier texte ajouté pour ne pas polluer le fichier de données
     private func nettoyerDernier(_ store: Store) {
         store.supprimerTextes(at: IndexSet([store.textes.count - 1]))
     }
